@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f0f23;
+  --background-end: #0a0a14;
+  --foreground: #e2e8f0;
+  --accent: #22d3ee;
+  --accent-muted: rgba(34, 211, 238, 0.2);
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(148, 163, 184, 0.15);
+  --muted-bg: rgba(255, 255, 255, 0.1);
+  --muted-fg: rgba(248, 250, 252, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: linear-gradient(180deg, var(--background) 0%, var(--background-end) 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Subtle star-like speckles for premium feel (dark mode) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,0.15), transparent),
+    radial-gradient(1.5px 1.5px at 40px 70px, rgba(255,255,255,0.1), transparent),
+    radial-gradient(1.5px 1.5px at 50px 160px, rgba(255,255,255,0.12), transparent);
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-color-mode="light"] body::before {
+  background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(15,23,42,0.06), transparent),
+    radial-gradient(1.5px 1.5px at 40px 70px, rgba(15,23,42,0.04), transparent),
+    radial-gradient(1.5px 1.5px at 50px 160px, rgba(15,23,42,0.05), transparent);
+}
